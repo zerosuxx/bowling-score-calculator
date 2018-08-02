@@ -1,19 +1,22 @@
 function bowlingScoreCalculator(frames) {
 
-    const isSpare = (frame) => frame[0] !== 10 && simpleFrameScore(frame) === 10;
+    const isSpare = (frame) => frame[0] !== 10 && calculateSimpleFrameScore(frame) === 10;
 
     const isStrike = (frame) => frame[0] === 10; 
 
-    const simpleFrameScore = (frame) => frame[0] + frame[1];
+    const calculateSimpleFrameScore = (frame) => frame[0] + frame[1];
+
+    //const calculateNextFramesScore = 
 
     const calculateFrameScore = (frameIndex) => {
         const frame = frames[frameIndex];
-        let frameScore = simpleFrameScore(frame);
+        let frameScore = calculateSimpleFrameScore(frame);
         if(isSpare(frame)) {
             frameScore += frames[frameIndex+1][0];
         }
         if(isStrike(frame)) {
-            frameScore += simpleFrameScore(frames[frameIndex+1]);
+            frameScore += calculateSimpleFrameScore(frames[frameIndex+1]);
+            frameScore += calculateSimpleFrameScore(frames[frameIndex+2]);
         }
         return frameScore;
     };

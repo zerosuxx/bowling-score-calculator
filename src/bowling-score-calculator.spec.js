@@ -29,7 +29,11 @@ describe('bowlingScoreCalculator', function() {
     expect(bowlingScoreCalculator([[2, 8], [3, 7], [5, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(33);
   });
 
-  it('should handle strike return 20', function () {
+  it('should handle strike return 24', function () {
     expect(bowlingScoreCalculator([[10, 0], [5, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(24);
+  });
+
+  it('should handle strike after strike', function () {
+    expect(bowlingScoreCalculator([[10, 0], [10, 0], [5, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(45);
   });
 });

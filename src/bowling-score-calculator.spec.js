@@ -20,4 +20,8 @@ describe('bowlingScoreCalculator', function() {
   it('should return 5', function () {
     expect(bowlingScoreCalculator([[2, 0], [2, 0], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(5);
   });
+
+  it('should handle spare return 12', function () {
+    expect(bowlingScoreCalculator([[2, 8], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(12);
+  });
 });

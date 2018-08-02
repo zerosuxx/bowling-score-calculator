@@ -12,4 +12,8 @@ describe('bowlingScoreCalculator', function() {
   it('should return 1', function () {
     expect(bowlingScoreCalculator([[1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(1);
   });
+
+  it('should return 4', function () {
+    expect(bowlingScoreCalculator([[2, 0], [2, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(4);
+  });
 });

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  node:
+    image: "node:10"
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "8081"
+    working_dir: "/home/node/app"
+    command: "npm install"

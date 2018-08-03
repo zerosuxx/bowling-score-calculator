@@ -1,18 +1,16 @@
 function bowlingScoreCalculator(frames) {
-    const isSpare = (frame) => frame[0] !== 10 && calculateSimpleFrameScore(frame) === 10;
+    const isSpare = (frame) => !isStrike(frame) && getFrameScore(frame) === 10;
 
     const isStrike = (frame) => frame[0] === 10;
 
-    const calculateSimpleFrameScore = (frame) => frame[0] + frame[1];
-
-    const calculateWholeFrameScore = (frame) => frame.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    const getFrameScore = (frame) => frame.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
     const calculateNextStrikesScore = (nextFrameIndex) => {
         let strikeScore = 0;
 
         const nextFrame = frames[nextFrameIndex];
         if (nextFrame) {
-            strikeScore += calculateSimpleFrameScore(nextFrame);
+            strikeScore += getFrameScore(nextFrame.slice(0, 2));
         }
 
         const nextNextFrame = frames[nextFrameIndex + 1];
@@ -23,15 +21,15 @@ function bowlingScoreCalculator(frames) {
     };
 
     const calculateFrameScore = (frame, frameIndex) => {
-        let frameScore = calculateWholeFrameScore(frame);
+        let frameScore = getFrameScore(frame);
         const nextFrameIndex = frameIndex + 1;
         const nextFrame = frames[nextFrameIndex];
 
-        if (isSpare(frame) && nextFrame) {
+        if ( nextFrame && isSpare(frame) ) {
             frameScore += nextFrame[0];
         }
 
-        if (isStrike(frame) && nextFrame) {
+        if ( nextFrame && isStrike(frame) ) {
             frameScore += calculateNextStrikesScore(nextFrameIndex);
         }
 

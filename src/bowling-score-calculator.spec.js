@@ -36,4 +36,9 @@ describe('bowlingScoreCalculator', function() {
   it('should handle strike after strike', function () {
     expect(bowlingScoreCalculator([[10, 0], [10, 0], [5, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(45);
   });
+
+
+  it('should handle all strike', function () {
+    expect(bowlingScoreCalculator([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]])).to.be.equals(300);
+  });
 });

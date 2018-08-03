@@ -29,7 +29,7 @@ function bowlingScoreCalculator(frames) {
         const nextFrame = frames[nextFrameIndex];
 
         if (isSpare(frame) && nextFrame) {
-            frameScore += frames[nextFrameIndex][0];
+            frameScore += nextFrame[0];
         }
 
         if (isStrike(frame) && nextFrame) {

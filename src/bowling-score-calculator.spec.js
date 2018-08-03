@@ -64,4 +64,8 @@ describe('bowlingScoreCalculator', function () {
     it('should handle spare and strike after last strike', function () {
         expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [10, 0], [5, 5, 10]])).to.be.equals(40);
     });
+
+    it('should handle hit after last strike', function () {
+        expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [10, 0, 5]])).to.be.equals(15);
+    });
 });

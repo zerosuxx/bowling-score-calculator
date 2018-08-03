@@ -52,4 +52,8 @@ describe('bowlingScoreCalculator', function () {
     it('should handle last triple strike after spare', function () {
         expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [5, 5], [10, 10, 10]])).to.be.equals(50);
     });
+
+    it('should handle spare and strike ping pong', function () {
+        expect(bowlingScoreCalculator([[5, 5], [10, 0], [1, 9], [10, 0], [2, 8], [10, 0], [7, 3], [10, 0], [0, 10], [10, 10, 10]])).to.be.equals(210);
+    });
 });

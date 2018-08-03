@@ -30,8 +30,10 @@ function bowlingScoreCalculator(frames) {
             frameScore += frames[nextFrameIndex][0];
         }
 
-        if(isStrike(frame) && isLastFrame(frame) && frame[2]) {
-            frameScore += frame[2];
+        if(isStrike(frame) && isLastFrame(frameIndex)) {
+            if(frame[2]) {
+                frameScore += frame[2];
+            }
         } else if (isStrike(frame)) {
             frameScore += calculateStrikesScore(nextFrameIndex);
             frameScore += calculateStrikesScore(nextFrameIndex + 1);

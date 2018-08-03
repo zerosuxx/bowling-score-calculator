@@ -38,9 +38,7 @@ function bowlingScoreCalculator(frames) {
     };
 
     let score = 0;
-    frames.forEach(function(frame, frameIndex) {
-        score += calculateFrameScore(frame, frameIndex);
-    });
+    frames.forEach((frame, frameIndex) => score += calculateFrameScore(frame, frameIndex));
 
     return score;
 }

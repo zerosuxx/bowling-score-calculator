@@ -33,7 +33,7 @@ describe('bowlingScoreCalculator', function () {
         expect(bowlingScoreCalculator([[10, 0], [5, 2], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(24);
     });
 
-    it('should handle strike after strike', function () {
+    it('should handle simple rolling after two strike', function () {
         expect(bowlingScoreCalculator([[10, 0], [10, 0], [5, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(45);
     });
 
@@ -41,4 +41,15 @@ describe('bowlingScoreCalculator', function () {
         expect(bowlingScoreCalculator([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]])).to.be.equals(300);
     });
 
+    it('should handle strike after spare', function () {
+        expect(bowlingScoreCalculator([[5, 5], [10, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(30);
+    });
+
+    it('should handle strike after two spare', function () {
+        expect(bowlingScoreCalculator([[9, 1], [8, 2], [10, 0], [3, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.be.equals(56);
+    });
+
+    it('should handle last triple strike after spare', function () {
+        expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [5, 5], [10, 10, 10]])).to.be.equals(50);
+    });
 });

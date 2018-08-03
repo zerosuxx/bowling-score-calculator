@@ -1,17 +1,18 @@
 function bowlingScoreCalculator(frames) {
-
     const isSpare = (frame) => frame[0] !== 10 && calculateSimpleFrameScore(frame) === 10;
 
     const isStrike = (frame) => frame[0] === 10;
 
     const calculateSimpleFrameScore = (frame) => frame[0] + frame[1];
 
+    const calculateWholeFrameScore = (frame) => frame.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+
     const calculateNextStrikesScore = (nextFrameIndex) => {
         let score = 0;
 
         const nextFrame = frames[nextFrameIndex];
         if (nextFrame) {
-            score = calculateSimpleFrameScore(nextFrame);
+            score += calculateSimpleFrameScore(nextFrame);
         }
         
         const nextNextFrame = frames[nextFrameIndex + 1];
@@ -21,10 +22,8 @@ function bowlingScoreCalculator(frames) {
         return score;
     };
 
-    const isLastFrame = (frameIndex) => frames.length - 1 === frameIndex;
-
     const calculateFrameScore = (frame, frameIndex) => {
-        let frameScore = calculateSimpleFrameScore(frame);
+        let frameScore = calculateWholeFrameScore(frame);
         const nextFrameIndex = frameIndex + 1;
         const nextFrame = frames[nextFrameIndex];
 
@@ -35,10 +34,6 @@ function bowlingScoreCalculator(frames) {
         if (isStrike(frame) && nextFrame) {
             frameScore += calculateNextStrikesScore(nextFrameIndex);
         }
-
-        if (isLastFrame(frameIndex) && frame[2]) {
-            frameScore += frame[2];
-        }
         return frameScore;
     };
 
@@ -46,6 +41,7 @@ function bowlingScoreCalculator(frames) {
     frames.forEach(function(frame, frameIndex) {
         score += calculateFrameScore(frame, frameIndex);
     });
+
     return score;
 }
 

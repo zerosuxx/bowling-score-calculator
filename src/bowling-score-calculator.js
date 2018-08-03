@@ -14,9 +14,9 @@ function bowlingScoreCalculator(frames) {
             score = calculateSimpleFrameScore(nextFrame);
         }
         
-        const afterNextFrame = frames[nextFrameIndex + 1];
-        if (afterNextFrame && isStrike(nextFrame)) {
-            score += afterNextFrame[0];
+        const nextNextFrame = frames[nextFrameIndex + 1];
+        if (nextNextFrame && isStrike(nextFrame)) {
+            score += nextNextFrame[0];
         }
         return score;
     };

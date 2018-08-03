@@ -56,4 +56,12 @@ describe('bowlingScoreCalculator', function () {
     it('should handle spare and strike ping pong', function () {
         expect(bowlingScoreCalculator([[5, 5], [10, 0], [1, 9], [10, 0], [2, 8], [10, 0], [7, 3], [10, 0], [0, 10], [10, 10, 10]])).to.be.equals(210);
     });
+
+    it('should handle 20 rolls: 10 pairs of 9 and miss', function () {
+        expect(bowlingScoreCalculator([[9, 0], [9, 0], [9, 0], [9, 0], [9, 0], [9, 0], [9, 0], [9, 0], [9, 0], [9, 0]])).to.be.equals(90);
+    });
+
+    it('should handle spare and strike after last strike', function () {
+        expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [10, 0], [5, 5, 10]])).to.be.equals(40);
+    });
 });

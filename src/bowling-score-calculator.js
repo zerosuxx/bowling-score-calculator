@@ -26,13 +26,14 @@ function bowlingScoreCalculator(frames) {
     const calculateFrameScore = (frameIndex) => {
         const frame = frames[frameIndex];
         const nextFrameIndex = frameIndex + 1;
+        const nextFrame = frames[nextFrameIndex];
         let frameScore = calculateSimpleFrameScore(frame);
 
-        if (isSpare(frame)) {
+        if (isSpare(frame) && nextFrame) {
             frameScore += frames[nextFrameIndex][0];
         }
 
-        if (isStrike(frame)) {
+        if (isStrike(frame) && nextFrame) {
             frameScore += calculateNextStrikesScore(nextFrameIndex);
         }
 
